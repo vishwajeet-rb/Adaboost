@@ -1,0 +1,23 @@
+ADABOOST:
+
+used mainly for binary calssification. Here week learners are stumps it means decieion tree with one node and two leaves.
+Unlike RF it is a sequential forest it means mistakes of previous stump will me learnt by succesive stump. 
+in RF each tree has homogeous importance however in ADABOOST stump has varied importance(weights)
+
+1. algorithm starts with assigning equal weight to each sample(sample weights).
+2. stumps are created for each feature.
+3. gini index(or gini impurity: the degree or probability of a particular variable being wrongly classified when it is randomly chosen.) are calculated for each of them
+4. The total error of stump is the sum of weights assocciated with incorrectly classified samples
+5. total error is the amount of say(i.e. weight of the stump) the stump has in the final classification. it is calculated by the formula
+6. if the total error is small(near to zero) then stump weight is large in the final classification and vice-versa. total error is 0.5 means stump weight is 0 as it doesnt
+		provide any information 
+7. will emphasize the need for the next stump to correctly classify the incorrectly classified sample. It can be done by increasing the sample weight of that sample and 
+		decreasing sample weight of others (i.e. correctly classified samples) 
+8. increase or decrease weights by the formula new_weight = sample_weight*e^amount_of_say (for decrease exponent is -ve)
+9. maintain these new sample weights and normalize it to sum up 1.
+10. hereafter go and execute steps of stump formation, calculating error, weight updation...... TILL max no. of stumps are generated or error is below threshold
+11. In synchronous to above point this is how one stump is depend on other
+12. in classification to identify class of a sample; amount of say or stump weight is summed up of both class and compared, the highest number the sample is associated 
+		with that class
+
+
